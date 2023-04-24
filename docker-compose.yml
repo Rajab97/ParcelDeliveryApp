@@ -1,0 +1,163 @@
+version: '3.4'
+
+services:
+  usermanagementservice:
+    container_name: user-management-service
+    build:
+      context: .
+      dockerfile: UserManagementService/Dockerfile
+    ports:
+     - 8003:80
+    depends_on:
+     - sql-server
+     - broker
+    restart: on-failure
+    networks:
+     - parcelDelivery
+    environment:
+     - DB_HOST=sql-server
+     - DB_SA_PASSWORD=asfgasafgas
+     - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+     - user_managament_logs:/microservices/logs
+
+  ordermanagementservice:
+    container_name: order-management-service
+    build:
+      context: .
+      dockerfile: OrderManagementService/Dockerfile
+    ports:
+     - 8001:80 
+    depends_on:
+     - sql-server
+     - broker
+    restart: on-failure
+    networks:
+     - parcelDelivery
+    environment:
+     - DB_HOST=sql-server
+     - DB_SA_PASSWORD=asfgasafgas
+     - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+     - order_managament_logs:/microservices/logs
+
+  deliverymanagementservice:
+    container_name: delivery-management-service
+    build:
+      context: .
+      dockerfile: DeliveryManagementService/Dockerfile
+    ports:
+     - 8004:80
+    depends_on:
+     - sql-server
+     - broker
+    restart: on-failure
+    networks:
+     - parcelDelivery
+    environment:
+     - DB_HOST=sql-server
+     - DB_SA_PASSWORD=asfgasafgas
+     - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+     - delivery_managament_logs:/microservices/logs
+
+  sql-server:
+    container_name: sql-server
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+     - 1450:1433
+    environment:
+     - ACCEPT_EULA=Y
+     - MSSQL_SA_PASSWORD=asfgasafg_Ad-_sdfas123
+    volumes:
+      - sql_data:/var/opt/mssql
+    networks:
+     - parcelDelivery
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.3.2
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    restart: on-failure
+    volumes:
+     - zookeeper_data:/var/lib/zookeeper/data
+     - zookeeper_log:/var/lib/zookeeper/log
+     - zookeeper_secrets:/etc/zookeeper/secrets
+     - zookeeper:/var/lib/zookeeper
+    networks:
+     - parcelDelivery
+
+  broker:
+    image: confluentinc/cp-kafka:7.3.2
+    container_name: broker
+    ports:
+      - "9092:9092"
+    depends_on:
+      - zookeeper
+    restart: on-failure
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092,PLAINTEXT_INTERNAL://broker:29092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+    networks:
+     - parcelDelivery  
+    volumes:
+     - kafka_data:/var/lib/kafka/data
+
+  kafdrop:
+    image: obsidiandynamics/kafdrop:latest
+    container_name: kafdrop
+    restart: on-failure
+    ports:
+      - "9000:9000"
+    environment:
+      KAFKA_BROKERCONNECT: broker:29092
+    depends_on:
+      - broker
+    networks:
+     - parcelDelivery  
+  
+  apigateway:
+    container_name: api-gateway
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: .
+      dockerfile: ApiGateway/Dockerfile
+    ports:
+     - 8000:80
+    networks:
+     - parcelDelivery
+    volumes:
+     - api_gateway_logs:/microservices/logs
+
+  healthcheckapp:
+    image: ${DOCKER_REGISTRY-}healthcheckapp
+    container_name: healthcheckapp
+    restart: on-failure
+    build:
+      context: .
+      dockerfile: HealthCheckApp/Dockerfile
+    ports:
+     - 8005:80
+    networks:
+     - parcelDelivery
+
+networks:
+    parcelDelivery:
+volumes:
+  sql_data:
+  kafka_data:
+  zookeeper_data:
+  zookeeper_log:
+  zookeeper:
+  zookeeper_secrets:
+  order_managament_logs:
+  user_managament_logs:
+  delivery_managament_logs:
+  api_gateway_logs:
