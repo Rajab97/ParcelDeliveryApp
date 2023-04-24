@@ -1,0 +1,577 @@
+{
+	"info": {
+		"_postman_id": "c4a9cdc4-e8aa-452d-a932-7f78df235d91",
+		"name": "Parcell Delivery App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "UMS - SignIn",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userName\": \"admin\",\n  \"password\": \"Admin1234\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/ums/api/Account/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"ums",
+						"api",
+						"Account",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UMS - SignUp (For users)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Adam\",\n  \"email\": \"john@gmail.com\",\n  \"userName\": \"john19999\",\n  \"password\": \"John1999\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8003/api/Account/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8003",
+					"path": [
+						"api",
+						"Account",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UMS - CreateAccount",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJJZCI6IjEiLCJGaXJzdE5hbWUiOiJhZG1pbiIsIkxhc3ROYW1lIjoiYWRtaW4iLCJleHAiOjE2ODIzOTA3Mjl9.3p81yCWALHxQ-GE9bzu4nQZsm2UqNj4-_bieHAitZFM"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"firstName\": \"Nadir\",\n  \"lastName\": \"Kazimova\",\n  \"email\": \"nadir.kazim91@gmail.com\",\n  \"userName\": \"nadir91\",\n  \"password\": \"Nadir1991\",\n  \"role\": \"Courier\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/ums/api/Account/createAccount",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"ums",
+						"api",
+						"Account",
+						"createAccount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UMS - GetAccounts",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJJZCI6IjEiLCJGaXJzdE5hbWUiOiJhZG1pbiIsIkxhc3ROYW1lIjoiYWRtaW4iLCJleHAiOjE2ODIzOTEwOTF9.BbrbRoEb36EyKbL_eXhS7yIS3M5M0zjcfy89z6t9RAI"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/ums/api/Account/getAccounts?PageIndex=1&PageSize=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"ums",
+						"api",
+						"Account",
+						"getAccounts"
+					],
+					"query": [
+						{
+							"key": "PageIndex",
+							"value": "1"
+						},
+						{
+							"key": "PageSize",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UMS - GetCouriersList ( For internal services )",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "ApiKey",
+						"value": "6b0f6be35a6e73d6f0e0f55a6fa1a01b"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8003/api/ex/Account/getCouriers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8003",
+					"path": [
+						"api",
+						"ex",
+						"Account",
+						"getCouriers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UMS - GetCourier ( For internal services )",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "ApiKey",
+						"value": "6b0f6be35a6e73d6f0e0f55a6fa1a01b"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8003/api/ex/Account/getCourier?UserId=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8003",
+					"path": [
+						"api",
+						"ex",
+						"Account",
+						"getCourier"
+					],
+					"query": [
+						{
+							"key": "UserId",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OMS - GetOrders",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJJZCI6IjEiLCJGaXJzdE5hbWUiOiJhZG1pbiIsIkxhc3ROYW1lIjoiYWRtaW4iLCJleHAiOjE2ODIzOTEwOTF9.BbrbRoEb36EyKbL_eXhS7yIS3M5M0zjcfy89z6t9RAI"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/oms/api/OrderRegistry/getOrders?PageIndex=1&PageSize=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"oms",
+						"api",
+						"OrderRegistry",
+						"getOrders"
+					],
+					"query": [
+						{
+							"key": "PageIndex",
+							"value": "1"
+						},
+						{
+							"key": "PageSize",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OMS - CreateOrder",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJJZCI6IjEiLCJGaXJzdE5hbWUiOiJhZG1pbiIsIkxhc3ROYW1lIjoiYWRtaW4iLCJleHAiOjE2ODIzOTEwOTF9.BbrbRoEb36EyKbL_eXhS7yIS3M5M0zjcfy89z6t9RAI"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"billingAddress\": \"Sulh street\",\n  \"shippingAddress\": \"Nerimanov Street 57\",\n  \"orderItems\": [\n    {\n      \"productNumber\": \"TYE236GR\",\n      \"quantity\": 5,\n      \"price\": 2\n    }\n  ]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/oms/api/OrderRegistry/createOrder",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"oms",
+						"api",
+						"OrderRegistry",
+						"createOrder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OMS - AssignToCourier",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJJZCI6IjEiLCJGaXJzdE5hbWUiOiJhZG1pbiIsIkxhc3ROYW1lIjoiYWRtaW4iLCJleHAiOjE2ODIzOTEwOTF9.BbrbRoEb36EyKbL_eXhS7yIS3M5M0zjcfy89z6t9RAI"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"orderId\": 7,\n  \"courierId\": 3\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/oms/api/OrderRegistry/assignToCurier",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"oms",
+						"api",
+						"OrderRegistry",
+						"assignToCurier"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OMS - CancelOrder",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJJZCI6IjEiLCJGaXJzdE5hbWUiOiJhZG1pbiIsIkxhc3ROYW1lIjoiYWRtaW4iLCJleHAiOjE2ODIzOTEwOTF9.BbrbRoEb36EyKbL_eXhS7yIS3M5M0zjcfy89z6t9RAI"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"orderId\": 7\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/oms/api/OrderRegistry/cancelOrder",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"oms",
+						"api",
+						"OrderRegistry",
+						"cancelOrder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OMS - ChangeOrderAddresses",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJJZCI6IjEiLCJGaXJzdE5hbWUiOiJhZG1pbiIsIkxhc3ROYW1lIjoiYWRtaW4iLCJleHAiOjE2ODIzOTEwOTF9.BbrbRoEb36EyKbL_eXhS7yIS3M5M0zjcfy89z6t9RAI"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"orderId\": 7,\n  \"billingAddress\": \"Sulh Kuc\",\n  \"shippingAddress\": null\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/oms/api/OrderRegistry/changeOrderAddresses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"oms",
+						"api",
+						"OrderRegistry",
+						"changeOrderAddresses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DMS - ChangeOrderStatus",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJJZCI6IjEiLCJGaXJzdE5hbWUiOiJhZG1pbiIsIkxhc3ROYW1lIjoiYWRtaW4iLCJleHAiOjE2ODIzNzc1NjF9.SI1JcUDS2FCX-8_09TO8pPYPCN3zqRBxVW8pMRVTjQ0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 7,\n  \"orderStatus\": \"Shipped\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/dms/api/DeliveryHistory/changeOrderStatus",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"dms",
+						"api",
+						"DeliveryHistory",
+						"changeOrderStatus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DMS - GetOrders",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJJZCI6IjEiLCJGaXJzdE5hbWUiOiJhZG1pbiIsIkxhc3ROYW1lIjoiYWRtaW4iLCJleHAiOjE2ODIzNzc1NjF9.SI1JcUDS2FCX-8_09TO8pPYPCN3zqRBxVW8pMRVTjQ0"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/dms/api/DeliveryHistory/getOrders?PageIndex=1&PageSize=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"dms",
+						"api",
+						"DeliveryHistory",
+						"getOrders"
+					],
+					"query": [
+						{
+							"key": "PageIndex",
+							"value": "1"
+						},
+						{
+							"key": "PageSize",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DMS - GetOrderDeliveryHistory",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJJZCI6IjEiLCJGaXJzdE5hbWUiOiJhZG1pbiIsIkxhc3ROYW1lIjoiYWRtaW4iLCJleHAiOjE2ODIzNzc1NjF9.SI1JcUDS2FCX-8_09TO8pPYPCN3zqRBxVW8pMRVTjQ0"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/dms/api/DeliveryHistory/getOrderDeliveryHistory?OrderNumber=12551215-WETY2361",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"dms",
+						"api",
+						"DeliveryHistory",
+						"getOrderDeliveryHistory"
+					],
+					"query": [
+						{
+							"key": "OrderNumber",
+							"value": "12551215-WETY2361"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DMS - IsCancelationAllowed",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "ApiKey",
+						"value": "6b0f6be35a6e73d6f0e0f55a6fa1a01b"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8004/api/ex/Order/isCancelationAllowed?OrderNumber=235623262-EYER3462",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8004",
+					"path": [
+						"api",
+						"ex",
+						"Order",
+						"isCancelationAllowed"
+					],
+					"query": [
+						{
+							"key": "OrderNumber",
+							"value": "235623262-EYER3462"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
