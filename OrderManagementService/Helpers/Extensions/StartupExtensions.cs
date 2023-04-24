@@ -140,56 +140,6 @@ namespace OrderManagementService.Helpers.Extensions
             return services;
         }
 
-        public static async Task InitialiseKafkaTopics(this IApplicationBuilder app, IConfiguration configuration)
-        {
-            Log.Information("InitialiseKafkaTopics method called");
-            using (var scope = app.ApplicationServices.CreateScope())
-            {
-                try
-                {
-                    var services = scope.ServiceProvider;
-                    var kafkaConfig = services.GetRequiredService<IOptions<KafkaConfig>>().Value;
-                    // create Kafka topic if it does not exist
-                    var config = new AdminClientConfig { BootstrapServers = kafkaConfig.Host };
-                    using (var adminClient = new AdminClientBuilder(config).Build())
-                    {
-                        foreach (var topic in KafkaTopics.GetAvailableTopics())
-                        {
-                            try
-                            {
-                                Log.Information($"Try to create {topic} topic");
-                                var metadata = adminClient.GetMetadata(TimeSpan.FromSeconds(10));
-                                var topics = metadata.Topics;
-                                if (topics.FirstOrDefault(t => t.Topic == topic) == null)
-                                {
-                                    Log.Information($"{topic} topic not exist yet");
-                                    var topicSpec = new TopicSpecification
-                                    {
-                                        Name = topic,
-                                        NumPartitions = 1,
-                                        ReplicationFactor = 1
-                                    };
-                                    await adminClient.CreateTopicsAsync(new List<TopicSpecification> { topicSpec });
-                                    Log.Information($"{topic} topic created successfully");
-                                }
-                                else
-                                    Log.Information($"{topic} topic already exist");
-                            }
-                            catch (Exception e)
-                            {
-                                Log.Error(e,$"Error occured while create {topic} topic");
-                            }
-                        }
-                    }
-                }
-                catch (Exception exc)
-                {
-                    Log.Error(exc, exc.Message);
-                    throw;
-                }
-            }
-        }
-
         public static IApplicationBuilder UseCustomExceptionHandler(this IApplicationBuilder applicationBuilder)
         {
             applicationBuilder.UseMiddleware<ExceptionHandlingMiddleware>();

@@ -59,13 +59,14 @@
 					"raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Adam\",\n  \"email\": \"john@gmail.com\",\n  \"userName\": \"john19999\",\n  \"password\": \"John1999\"\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8003/api/Account/signup",
+					"raw": "http://localhost:8000/ums/api/Account/signup",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8003",
+					"port": "8000",
 					"path": [
+						"ums",
 						"api",
 						"Account",
 						"signup"
@@ -85,7 +86,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJJZCI6IjEiLCJGaXJzdE5hbWUiOiJhZG1pbiIsIkxhc3ROYW1lIjoiYWRtaW4iLCJleHAiOjE2ODIzOTA3Mjl9.3p81yCWALHxQ-GE9bzu4nQZsm2UqNj4-_bieHAitZFM"
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJJZCI6IjEiLCJGaXJzdE5hbWUiOiJhZG1pbiIsIkxhc3ROYW1lIjoiYWRtaW4iLCJleHAiOjE2ODI0NDc5OTh9.CSzKA20TtWS533iJYSeGOOeUfB9zQbqjodeTciBl56Q"
 					},
 					{
 						"key": "Content-Type",
@@ -233,7 +234,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJJZCI6IjEiLCJGaXJzdE5hbWUiOiJhZG1pbiIsIkxhc3ROYW1lIjoiYWRtaW4iLCJleHAiOjE2ODIzOTEwOTF9.BbrbRoEb36EyKbL_eXhS7yIS3M5M0zjcfy89z6t9RAI"
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJVc2VyIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZW1haWxhZGRyZXNzIjoiam9obkBnbWFpbC5jb20iLCJVc2VySWQiOiIzIiwiRmlyc3ROYW1lIjoiSm9obiIsIkxhc3ROYW1lIjoiQWRhbSIsImV4cCI6MTY4MjQ0ODA1NX0.2VlHVjm0JwYZgtFSHtlENmDe7JYTXUO8keHpBaTk17U"
 					}
 				],
 				"url": {
@@ -313,7 +314,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJJZCI6IjEiLCJGaXJzdE5hbWUiOiJhZG1pbiIsIkxhc3ROYW1lIjoiYWRtaW4iLCJleHAiOjE2ODIzOTEwOTF9.BbrbRoEb36EyKbL_eXhS7yIS3M5M0zjcfy89z6t9RAI"
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJJZCI6IjEiLCJGaXJzdE5hbWUiOiJhZG1pbiIsIkxhc3ROYW1lIjoiYWRtaW4iLCJleHAiOjE2ODI0NDgxODh9.05gQ3KJERqnFksIBKbUcXxG5J7bKnNR_gzkrUXWW5cM"
 					},
 					{
 						"key": "Content-Type",
@@ -322,7 +323,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"orderId\": 7,\n  \"courierId\": 3\n}"
+					"raw": "{\n  \"orderId\": 1,\n  \"courierId\": 2\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8000/oms/api/OrderRegistry/assignToCurier",
@@ -469,7 +470,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJJZCI6IjEiLCJGaXJzdE5hbWUiOiJhZG1pbiIsIkxhc3ROYW1lIjoiYWRtaW4iLCJleHAiOjE2ODIzNzc1NjF9.SI1JcUDS2FCX-8_09TO8pPYPCN3zqRBxVW8pMRVTjQ0"
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJVc2VyIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZW1haWxhZGRyZXNzIjoiam9obkBnbWFpbC5jb20iLCJVc2VySWQiOiIzIiwiRmlyc3ROYW1lIjoiSm9obiIsIkxhc3ROYW1lIjoiQWRhbSIsImV4cCI6MTY4MjQ0OTE1M30.GHyEGoTz320exLU9nsN6-H8EW3V3xtEIHUHm41C5xjY"
 					}
 				],
 				"url": {

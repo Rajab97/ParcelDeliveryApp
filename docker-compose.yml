@@ -41,6 +41,21 @@ services:
     volumes:
      - order_managament_logs:/microservices/logs
 
+  ordermanagementservice.outbox:
+    image: ${DOCKER_REGISTRY-}ordermanagementserviceoutbox
+    container_name: order-managament-service-outbox
+    build:
+      context: .
+      dockerfile: OrderManagementService.OutBox/Dockerfile
+    volumes:
+     - order_managament_outbox_logs:/microservices/logs
+    networks:
+     - parcelDelivery
+    depends_on:
+     - sql-server
+     - broker
+     - ordermanagementservice
+
   deliverymanagementservice:
     container_name: delivery-management-service
     build:
@@ -161,3 +176,4 @@ volumes:
   user_managament_logs:
   delivery_managament_logs:
   api_gateway_logs:
+  order_managament_outbox_logs:

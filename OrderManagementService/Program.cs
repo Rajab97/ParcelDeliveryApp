@@ -37,7 +37,6 @@ var app = builder.Build();
  #region Initialise and Seed data
  await app.InitialiseAsync();
  await app.SeedAsync();
- await app.InitialiseKafkaTopics(builder.Configuration);
  #endregion
 
  #region Middlewares

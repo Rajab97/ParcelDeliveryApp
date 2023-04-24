@@ -33,6 +33,7 @@ namespace OrderManagementService.Infrastructure.Services
         private readonly KafkaConfig _kafkaConfig;
         private readonly IAccountService _accountService;
         private readonly IDeliveryService _deliveryService;
+        private readonly IRepository<OutBoxMessage> _outBoxRepo;
 
         public OderRegistrationService(ILogger<OderRegistrationService> logger,
                                         IRepository<Order> ordersRepo,
@@ -42,7 +43,8 @@ namespace OrderManagementService.Infrastructure.Services
                                                         IKafkaHelperService kafkaHelperService,
                                                             IOptions<KafkaConfig> kafkaConfig,
                                                                 IAccountService accountService,
-                                                                    IDeliveryService deliveryService)
+                                                                    IDeliveryService deliveryService,
+                                                                        IRepository<OutBoxMessage> outBoxRepo)
         {
             _logger = logger;
             _ordersRepo = ordersRepo;
@@ -53,6 +55,7 @@ namespace OrderManagementService.Infrastructure.Services
             _kafkaConfig = kafkaConfig.Value;
             _accountService = accountService;
             _deliveryService = deliveryService;
+            _outBoxRepo = outBoxRepo;
         }
 
         public async Task<ApiResponse<CreateOrderResponseDTO>> CreateOrderAsync(CreateOrderRequestDTO requestDTO)
@@ -163,7 +166,9 @@ namespace OrderManagementService.Infrastructure.Services
                 CourierFullName = $"{courier.FirstName} {courier.LastName}",
                 CourierUserName = courier.UserName
             };
-            await _kafkaHelperService.ProduceMessageAsync(message, KafkaTopics.ASSIGN_TO_COURIER);
+            await _outBoxRepo.AddAsync(new OutBoxMessage() { Message = JsonConvert.SerializeObject(message) , Topic = KafkaTopics.ASSIGN_TO_COURIER });
+            //Use outBox pattern for producing more reliable messages
+            //await _kafkaHelperService.ProduceMessageAsync(message, KafkaTopics.ASSIGN_TO_COURIER);
             await _ordersRepo.UpdateAsync(order);
             await _unitOfWork.CompleteAsync();
             _logger.LogInformation("Successfully assigned to courier");
@@ -195,7 +200,9 @@ namespace OrderManagementService.Infrastructure.Services
                 {
                      OrderNumber = order.OrderNumber,
                 };
-                await _kafkaHelperService.ProduceMessageAsync(message, KafkaTopics.CANCEL_ORDER);
+                await _outBoxRepo.AddAsync(new OutBoxMessage() { Message = JsonConvert.SerializeObject(message), Topic = KafkaTopics.CANCEL_ORDER });
+                //Use outBox pattern for producing more reliable messages
+               // await _kafkaHelperService.ProduceMessageAsync(message, KafkaTopics.CANCEL_ORDER);
                 await _ordersRepo.UpdateAsync(order);
                 await _unitOfWork.CompleteAsync();
                 _logger.LogInformation("Successfully canceled");

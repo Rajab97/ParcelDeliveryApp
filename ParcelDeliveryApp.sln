@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeliveryManagementService",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGateway", "ApiGateway\ApiGateway.csproj", "{81E46A1B-E6B2-4F73-82C4-07420748D3FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthCheckApp", "HealthCheckApp\HealthCheckApp.csproj", "{E2F4DFE2-7F37-4746-B64B-CD891E136984}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthCheckApp", "HealthCheckApp\HealthCheckApp.csproj", "{E2F4DFE2-7F37-4746-B64B-CD891E136984}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagementService.OutBox", "OrderManagementService.OutBox\OrderManagementService.OutBox.csproj", "{ECEFDB0B-B99F-419F-8580-F2BD68701400}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{E2F4DFE2-7F37-4746-B64B-CD891E136984}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2F4DFE2-7F37-4746-B64B-CD891E136984}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2F4DFE2-7F37-4746-B64B-CD891E136984}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECEFDB0B-B99F-419F-8580-F2BD68701400}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECEFDB0B-B99F-419F-8580-F2BD68701400}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECEFDB0B-B99F-419F-8580-F2BD68701400}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECEFDB0B-B99F-419F-8580-F2BD68701400}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using OrderManagementService.Domain.Entities;
 
@@ -11,8 +10,6 @@ namespace OrderManagementService.Infrastructure.Persistance
         {
 
         }
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<OutBoxMessage> OutBoxMessages { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
