@@ -1,0 +1,17 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "apigateway": "StartDebugging",
+        "deliverymanagementservice": "StartDebugging",
+        "healthcheckapp": "StartDebugging",
+        "ordermanagementservice": "StartDebugging",
+        "ordermanagementservice.outbox": "StartDebugging",
+        "parceldeliveryui": "StartDebugging",
+        "usermanagementservice": "StartDebugging"
+      }
+    }
+  }
+}

@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGateway", "ApiGateway\Ap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthCheckApp", "HealthCheckApp\HealthCheckApp.csproj", "{E2F4DFE2-7F37-4746-B64B-CD891E136984}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagementService.OutBox", "OrderManagementService.OutBox\OrderManagementService.OutBox.csproj", "{ECEFDB0B-B99F-419F-8580-F2BD68701400}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderManagementService.OutBox", "OrderManagementService.OutBox\OrderManagementService.OutBox.csproj", "{ECEFDB0B-B99F-419F-8580-F2BD68701400}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParcelDeliveryUI", "ParcelDeliveryUI\ParcelDeliveryUI.csproj", "{662BA0F2-B39C-4C67-A584-55695A1B4051}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{ECEFDB0B-B99F-419F-8580-F2BD68701400}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECEFDB0B-B99F-419F-8580-F2BD68701400}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECEFDB0B-B99F-419F-8580-F2BD68701400}.Release|Any CPU.Build.0 = Release|Any CPU
+		{662BA0F2-B39C-4C67-A584-55695A1B4051}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{662BA0F2-B39C-4C67-A584-55695A1B4051}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{662BA0F2-B39C-4C67-A584-55695A1B4051}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{662BA0F2-B39C-4C67-A584-55695A1B4051}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

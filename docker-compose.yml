@@ -8,6 +8,7 @@ services:
       dockerfile: UserManagementService/Dockerfile
     ports:
      - 8003:80
+     - 8007:443 
     depends_on:
      - sql-server
      - broker
@@ -163,6 +164,17 @@ services:
     networks:
      - parcelDelivery
 
+  parceldeliveryui:
+    image: ${DOCKER_REGISTRY-}parceldeliveryui
+    build:
+      context: .
+      dockerfile: ParcelDeliveryUI/Dockerfile
+    container_name: parcelDeliveryUI
+    ports:
+     - 8006:80
+    networks:
+     - parcelDelivery
+
 networks:
     parcelDelivery:
 volumes:
@@ -177,3 +189,4 @@ volumes:
   delivery_managament_logs:
   api_gateway_logs:
   order_managament_outbox_logs:
+

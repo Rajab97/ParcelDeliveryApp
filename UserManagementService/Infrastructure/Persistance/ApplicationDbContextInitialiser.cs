@@ -6,6 +6,8 @@ using SharedLibrary.Models.Auth;
 using UserManagementService.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using UserManagementService.Application.Services.Common;
+using System.Security.Claims;
+using IdentityModel;
 
 namespace UserManagementService.Infrastructure.Persistance
 {
@@ -79,11 +81,24 @@ namespace UserManagementService.Infrastructure.Persistance
                     var userResult = await userManager.CreateAsync(adminUser, defaultUser.Password);
                     if (userResult.Succeeded)
                     {
-                        var userAddResult = await userManager.AddToRoleAsync(adminUser, RoleTypes.Admin);
-                        if (userAddResult.Succeeded)
-                            Log.Information($"Admin created successfully");
+                        var claimsResult = await userManager.AddClaimsAsync(adminUser,new List<Claim>()
+                        {
+                            new Claim(JwtClaimTypes.Name,$"{defaultUser.FirstName} {defaultUser.LastName}"),
+                            new Claim(JwtClaimTypes.Email, defaultUser.Email)
+                        });
+                        if (claimsResult.Succeeded)
+                        {
+                            var userAddResult = await userManager.AddToRoleAsync(adminUser, RoleTypes.Admin);
+                            if (userAddResult.Succeeded)
+                                Log.Information($"Admin created successfully");
+                            else
+                                Log.Information($"Error happend while add role to user {JsonConvert.SerializeObject(userAddResult)}");
+                        }
                         else
-                            Log.Information($"Error happend while add role to user {JsonConvert.SerializeObject(userAddResult)}");
+                        {
+                            Log.Error($"Error occured while adding claims to default admin role. {JsonConvert.SerializeObject(claimsResult)}");
+                            throw new ApplicationException($"Default admin role couldn't created");
+                        }
                     }
                     else
                     {

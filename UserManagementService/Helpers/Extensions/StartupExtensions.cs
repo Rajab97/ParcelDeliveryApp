@@ -84,7 +84,9 @@ namespace UserManagementService.Helpers.Extensions
                 //For extra configurations
             })
                 .AddInMemoryApiScopes(IdentityConfig.ApiScopes)
-                .AddInMemoryClients(IdentityConfig.Clients);
+                .AddInMemoryClients(IdentityConfig.Clients)
+                .AddInMemoryIdentityResources(IdentityConfig.IdentityResources)
+                .AddAspNetIdentity<User>();
             return services;
         }
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
