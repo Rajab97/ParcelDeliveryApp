@@ -11,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 //Application services
 builder.Services.AddExternalPackages(builder.Configuration)
                 .AddApplicationServices()
+                .AddIdentityServerConfiguration()
                 .AddMyAuthentication(builder.Configuration)
                 .AddAppsettingsConfigs(builder.Configuration);
 
@@ -30,8 +31,8 @@ builder.ConfiureSerilog();
 var app = builder.Build();
 
 #region Initialise and Seed data
-await app.InitialiseAsync();
-await app.SeedAsync();
+//await app.InitialiseAsync();
+//await app.SeedAsync();
 #endregion
 
 #region Middlewares
@@ -45,10 +46,12 @@ app.UseCustomExceptionHandler();
 app.UseHttpsRedirection();
 
 app.UseApiKeyAuthenticationForExposedRoutes();
-app.UseAuthentication();
+//Not need call to UseAuthentication because it already called in UseIDentity
+//app.UseAuthentication();
 
 app.UseRouting();
 
+app.UseIdentityServer();    
 app.UseAuthorization();
 
 app.UseEndpoints(endpoints => {

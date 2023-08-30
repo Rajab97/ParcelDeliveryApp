@@ -12,6 +12,7 @@ using UserManagementService.Application.Services.Common;
 using UserManagementService.Domain;
 using UserManagementService.Domain.Entities;
 using UserManagementService.Helpers.Configs;
+using UserManagementService.Identity.Statics;
 using UserManagementService.Infrastructure.Persistance;
 using UserManagementService.Infrastructure.Persistance.Repositories;
 using UserManagementService.Infrastructure.Services;
@@ -76,7 +77,16 @@ namespace UserManagementService.Helpers.Extensions
                         failureStatus: HealthStatus.Degraded, tags: new[] { "db", "sql" });
             return services;
         }
-
+        public static IServiceCollection AddIdentityServerConfiguration(this IServiceCollection services)
+        {
+            services.AddIdentityServer(options =>
+            {
+                //For extra configurations
+            })
+                .AddInMemoryApiScopes(IdentityConfig.ApiScopes)
+                .AddInMemoryClients(IdentityConfig.Clients);
+            return services;
+        }
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             #region Application services
